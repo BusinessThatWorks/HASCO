@@ -8,7 +8,6 @@
   "name1"
  ],
  "fields": [ 
-    
   {
    "fieldname": "name1",
    "fieldtype": "Data",

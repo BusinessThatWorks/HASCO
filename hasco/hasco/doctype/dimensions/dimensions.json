@@ -1,0 +1,116 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{mould_sizes}",
+ "creation": "2026-02-26 15:50:51.926673",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "mould_sizes",
+  "type_of_mould",
+  "column_break_eogx",
+  "average_weight",
+  "mould_length",
+  "column_break_mdjb",
+  "no_of_ingot_per_heat",
+  "hot_top_type",
+  "rate",
+  "section_break_vwzw",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "mould_sizes",
+   "fieldtype": "Data",
+   "label": "Mould Sizes"
+  },
+  {
+   "fieldname": "type_of_mould",
+   "fieldtype": "Link",
+   "label": "Type Of Mould",
+   "options": "Mould Type"
+  },
+  {
+   "fieldname": "column_break_eogx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Kg per Pcs",
+   "fieldname": "average_weight",
+   "fieldtype": "Float",
+   "label": "Average Weight",
+   "precision": "2"
+  },
+  {
+   "description": "without H.T (Inches)",
+   "fieldname": "mould_length",
+   "fieldtype": "Data",
+   "label": "Mould Length "
+  },
+  {
+   "fieldname": "column_break_mdjb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "no_of_ingot_per_heat",
+   "fieldtype": "Int",
+   "label": "No of Ingot Per Heat"
+  },
+  {
+   "fieldname": "hot_top_type",
+   "fieldtype": "Link",
+   "label": "HOT TOP Type",
+   "options": "HOT TOP Type"
+  },
+  {
+   "fieldname": "rate",
+   "fieldtype": "Currency",
+   "label": "Rate",
+   "precision": "2"
+  },
+  {
+   "fieldname": "section_break_vwzw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Dimensions",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-02-26 17:31:59.220903",
+ "modified_by": "Administrator",
+ "module": "Hasco",
+ "name": "Dimensions",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
