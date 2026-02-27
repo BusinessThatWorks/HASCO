@@ -1,18 +1,16 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:S/{customer_name}/{###}",
+ "autoname": "format:S/{party_code}/{###}",
  "creation": "2026-02-26 16:15:45.442899",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "section_break_sbuz",
+  "part_name",
+  "party_code",
+  "column_break_pmuw",
   "date",
-  "delivery_date",
-  "column_break_avao",
-  "customer",
-  "customer_name",
-  "column_break_xogh",
   "customers_purchase_order",
   "section_break_mogq",
   "table_ulgv",
@@ -28,28 +26,9 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "customer",
-   "fieldtype": "Link",
-   "label": "Customer ",
-   "options": "Customer"
-  },
-  {
-   "fieldname": "column_break_avao",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "date",
    "fieldtype": "Date",
-   "label": "Date"
-  },
-  {
-   "fieldname": "delivery_date",
-   "fieldtype": "Date",
-   "label": "Delivery Date"
-  },
-  {
-   "fieldname": "column_break_xogh",
-   "fieldtype": "Column Break"
+   "label": "Sauda Date"
   },
   {
    "fieldname": "customers_purchase_order",
@@ -88,25 +67,35 @@
    "search_index": 1
   },
   {
-   "fetch_from": "customer.custom_customer_code",
-   "fieldname": "customer_name",
-   "fieldtype": "Data",
-   "label": "Customer Name"
-  },
-  {
    "fieldname": "section_break_lzav",
    "fieldtype": "Section Break"
   },
   {
    "fieldname": "column_break_qyhf",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "part_name",
+   "fieldtype": "Link",
+   "label": "Party Name",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "column_break_pmuw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "part_name.custom_customer_code",
+   "fieldname": "party_code",
+   "fieldtype": "Data",
+   "label": "Party Code"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-02-26 17:41:08.831832",
+ "modified": "2026-02-27 14:24:49.975783",
  "modified_by": "Administrator",
  "module": "Hasco",
  "name": "Sauda Booking",
