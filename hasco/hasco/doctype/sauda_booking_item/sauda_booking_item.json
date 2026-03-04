@@ -9,18 +9,20 @@
   "quantity",
   "column_break_juno",
   "amount",
+  "section_break_emgw",
+  "base_price_id",
+  "column_break_ogcz",
+  "base_price",
   "grade_price_section",
   "grade",
   "column_break_yppv",
   "rate",
-  "section_break_wrmk",
-  "base_price_id",
-  "column_break_dxfb",
-  "base_price",
   "dimension_price_section",
   "dimension",
+  "item_process",
   "column_break_xkuy",
-  "dimension_rate"
+  "dimension_rate",
+  "attribute_name"
  ],
  "fields": [
   {
@@ -64,29 +66,6 @@
    "precision": "2"
   },
   {
-   "fieldname": "section_break_wrmk",
-   "fieldtype": "Section Break",
-   "label": "Base Price"
-  },
-  {
-   "fieldname": "base_price_id",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Base Price ID",
-   "options": "Base Price"
-  },
-  {
-   "fieldname": "column_break_dxfb",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fetch_from": "base_price_id.base_rate",
-   "fieldname": "base_price",
-   "fieldtype": "Currency",
-   "label": "Base Price",
-   "precision": "2"
-  },
-  {
    "fieldname": "dimension_price_section",
    "fieldtype": "Section Break",
    "label": "Dimension Price"
@@ -108,13 +87,46 @@
    "fieldtype": "Currency",
    "label": "Dimension Rate ",
    "precision": "2"
+  },
+  {
+   "fieldname": "item_process",
+   "fieldtype": "Link",
+   "label": "item process",
+   "options": "Item Attribute"
+  },
+  {
+   "fetch_from": "item_process.attribute_name",
+   "fieldname": "attribute_name",
+   "fieldtype": "Data",
+   "label": "Process Value"
+  },
+  {
+   "fieldname": "section_break_emgw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "base_price_id",
+   "fieldtype": "Link",
+   "label": "Base Price ID",
+   "options": "Base Price"
+  },
+  {
+   "fieldname": "column_break_ogcz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "base_price_id.base_rate",
+   "fieldname": "base_price",
+   "fieldtype": "Currency",
+   "label": "Base Price",
+   "precision": "2"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-02-26 17:53:30.183392",
+ "modified": "2026-03-04 12:57:23.895353",
  "modified_by": "Administrator",
  "module": "Hasco",
  "name": "Sauda Booking Item",
