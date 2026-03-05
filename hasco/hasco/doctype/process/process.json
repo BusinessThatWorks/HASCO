@@ -1,33 +1,19 @@
 {
  "actions": [],
- "autoname": "format:{date}",
- "creation": "2026-02-26 15:30:02.695330",
+ "allow_rename": 1,
+ "creation": "2026-03-05 16:15:11.335106",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "date",
-  "column_break_ozor",
-  "base_rate",
-  "section_break_rbep",
-  "amended_from"
+  "section_break_j5z9",
+  "amended_from",
+  "column_break_lcug",
+  "process_name",
+  "rate"
  ],
  "fields": [
   {
-   "fieldname": "date",
-   "fieldtype": "Date",
-   "label": "Date"
-  },
-  {
-   "fieldname": "column_break_ozor",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "base_rate",
-   "fieldtype": "Currency",
-   "label": "Base Rate"
-  },
-  {
-   "fieldname": "section_break_rbep",
+   "fieldname": "section_break_j5z9",
    "fieldtype": "Section Break"
   },
   {
@@ -35,22 +21,37 @@
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Base Price",
+   "options": "Process",
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "column_break_lcug",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "process_name",
+   "fieldtype": "Data",
+   "label": "Process Name"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "rate",
+   "fieldtype": "Currency",
+   "label": "Rate",
+   "precision": "2"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-05 16:18:54.729905",
+ "modified": "2026-03-05 16:16:09.211623",
  "modified_by": "Administrator",
  "module": "Hasco",
- "name": "Base Price",
- "naming_rule": "Expression (old style)",
- "owner": "arindam.dutta@businessthat.works",
+ "name": "Process",
+ "owner": "Administrator",
  "permissions": [
   {
    "create": 1,
