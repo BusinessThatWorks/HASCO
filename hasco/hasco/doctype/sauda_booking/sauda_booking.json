@@ -11,7 +11,7 @@
   "party_code",
   "column_break_pmuw",
   "date",
-  "customers_purchase_order",
+  "communication_medium",
   "section_break_mogq",
   "table_ulgv",
   "amended_from",
@@ -29,11 +29,6 @@
    "fieldname": "date",
    "fieldtype": "Date",
    "label": "Sauda Date"
-  },
-  {
-   "fieldname": "customers_purchase_order",
-   "fieldtype": "Data",
-   "label": "Customer's Purchase Order"
   },
   {
    "fieldname": "section_break_mogq",
@@ -89,13 +84,19 @@
    "fieldname": "party_code",
    "fieldtype": "Data",
    "label": "Party Code"
+  },
+  {
+   "fieldname": "communication_medium",
+   "fieldtype": "Select",
+   "label": "Booking Medium",
+   "options": "\nPhone\nE-Mail\nWhatsApp\nOthers"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-02-27 14:24:49.975783",
+ "modified": "2026-03-05 17:30:58.410967",
  "modified_by": "Administrator",
  "module": "Hasco",
  "name": "Sauda Booking",
