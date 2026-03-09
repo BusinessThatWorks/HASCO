@@ -26,7 +26,7 @@
   "section_break_dhex",
   "chemical_composition",
   "additional_items",
-  "additional_items_rate",
+  "addl_rate",
   "adjustments"
  ],
  "fields": [
@@ -144,21 +144,21 @@
    "label": "Addl. Items"
   },
   {
-   "fieldname": "additional_items_rate",
-   "fieldtype": "Data",
-   "label": "Addl. Rate"
-  },
-  {
    "fieldname": "adjustments",
    "fieldtype": "Data",
    "label": "Adjustments"
+  },
+  {
+   "fieldname": "addl_rate",
+   "fieldtype": "Data",
+   "label": "Addl. Rate"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-03-09 15:27:41.732044",
+ "modified": "2026-03-09 15:33:29.132184",
  "modified_by": "Administrator",
  "module": "Hasco",
  "name": "Sauda Booking Item",
