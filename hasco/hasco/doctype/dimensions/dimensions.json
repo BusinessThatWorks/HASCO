@@ -1,11 +1,12 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "format:{mould_sizes}",
+ "autoname": "format:{mould_sizes} - {mould_length}",
  "creation": "2026-02-26 15:50:51.926673",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "id",
   "mould_sizes",
   "type_of_mould",
   "column_break_eogx",
@@ -81,13 +82,18 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "id",
+   "fieldtype": "Data",
+   "label": "ID"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-02-26 17:31:59.220903",
+ "modified": "2026-03-09 12:08:31.051094",
  "modified_by": "Administrator",
  "module": "Hasco",
  "name": "Dimensions",

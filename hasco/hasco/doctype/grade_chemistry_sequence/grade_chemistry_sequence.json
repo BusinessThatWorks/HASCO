@@ -1,26 +1,26 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2026-03-06 15:27:53.999607",
+ "creation": "2026-03-06 17:06:18.479668",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "chemical_composition_name"
+  "grade_chemistry_sequence"
  ],
  "fields": [
   {
-   "fieldname": "chemical_composition_name",
+   "fieldname": "grade_chemistry_sequence",
    "fieldtype": "Data",
-   "label": "Grade Chemistry"
+   "label": "Grade Chemistry Sequence"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-06 17:44:15.974838",
+ "modified": "2026-03-06 17:18:00.153974",
  "modified_by": "Administrator",
  "module": "Hasco",
- "name": "Chemical Composition",
+ "name": "Grade Chemistry Sequence",
  "owner": "Administrator",
  "permissions": [
   {
