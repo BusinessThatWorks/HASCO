@@ -10,6 +10,9 @@ frappe.ui.form.on("Sauda Booking Item", {
     },
     attribute_name: function(frm, cdt, cdn) {   // process rate
         calculate_row(frm, cdt, cdn);
+    },
+    adjustments: function(frm, cdt, cdn) {   // ⭐ ADD THIS
+        calculate_row(frm, cdt, cdn);
     }
 });
 
@@ -19,13 +22,15 @@ function calculate_row(frm, cdt, cdn) {
     let base = flt(row.base_price);
     let dimension = flt(row.dimension_rate);
     let process = flt(row.attribute_name);
+    let addn = flt(row.addl_rate);
+    let adjustments = flt(row.adjustments);
     let qty = flt(row.quantity);
 
     // Rate calculation
-    row.rate = base + dimension + process;
+    row.rate = base + dimension + process + addn;
 
     // Amount calculation
-    row.amount = qty * row.rate;
+    row.amount = (qty * row.rate) + adjustments;
 
     frm.refresh_field("table_ulgv");
 
