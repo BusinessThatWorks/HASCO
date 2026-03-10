@@ -8,10 +8,10 @@ frappe.ui.form.on("Sauda Booking Item", {
     dimension_rate: function(frm, cdt, cdn) {
         calculate_row(frm, cdt, cdn);
     },
-    attribute_name: function(frm, cdt, cdn) {   // process rate
+    attribute_name: function(frm, cdt, cdn) {   
         calculate_row(frm, cdt, cdn);
     },
-    adjustments: function(frm, cdt, cdn) {   // ⭐ ADD THIS
+    adjustments: function(frm, cdt, cdn) {   
         calculate_row(frm, cdt, cdn);
     }
 });
