@@ -33,11 +33,11 @@ function calculate_row(frm, cdt, cdn) {
     let adjustments = flt(row.adjustments);
     let qty = flt(row.quantity);
 
-    // Rate calculation
-    row.rate = base + grade + dimension + process + addn;
+    // Rate calculation (adjustments included here now)
+    row.rate = base + grade + dimension + process + addn + adjustments;
 
-    // Amount calculation
-    row.amount = (qty * row.rate) + adjustments;
+    // Amount calculation (simple: qty × rate)
+    row.amount = qty * row.rate;
 
     frm.refresh_field("table_ulgv");
     calculate_totals(frm);
