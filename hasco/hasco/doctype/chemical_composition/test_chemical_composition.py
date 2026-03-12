@@ -1,9 +1,0 @@
-# Copyright (c) 2026, Pratikshya Gochhayat and Contributors
-# See license.txt
-
-# import frappe
-from frappe.tests.utils import FrappeTestCase
-
-
-class TestChemicalComposition(FrappeTestCase):
-	pass

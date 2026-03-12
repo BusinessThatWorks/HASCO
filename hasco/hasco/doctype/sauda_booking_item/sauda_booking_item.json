@@ -17,6 +17,8 @@
   "base_price",
   "grade_price_section",
   "grade",
+  "column_break_lfvi",
+  "grade_rate",
   "dimension_price_section",
   "dimension",
   "item_process",
@@ -24,10 +26,12 @@
   "dimension_rate",
   "attribute_name",
   "section_break_dhex",
-  "chemical_composition",
   "additional_items",
   "addl_rate",
-  "adjustments"
+  "adjustments",
+  "column_break_wmhr",
+  "grade_chemistry",
+  "grade_chemistry_sequence"
  ],
  "fields": [
   {
@@ -64,7 +68,7 @@
   {
    "fieldname": "rate",
    "fieldtype": "Currency",
-   "label": "Rate"
+   "label": "FInal Rate"
   },
   {
    "fieldname": "dimension_price_section",
@@ -86,7 +90,7 @@
    "fetch_from": "dimension.rate",
    "fieldname": "dimension_rate",
    "fieldtype": "Currency",
-   "label": "Dim. Rate ",
+   "label": "Dim Rate ",
    "precision": "2"
   },
   {
@@ -99,7 +103,7 @@
    "fetch_from": "item_process.rate",
    "fieldname": "attribute_name",
    "fieldtype": "Data",
-   "label": "Pro. Rate"
+   "label": "Pro Rate"
   },
   {
    "fieldname": "section_break_emgw",
@@ -133,32 +137,51 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "chemical_composition",
-   "fieldtype": "Link",
-   "label": "Chemical Composition",
-   "options": "Chemical Composition"
-  },
-  {
    "fieldname": "additional_items",
    "fieldtype": "Data",
-   "label": "Addl. Items"
+   "label": "Addl Items"
   },
   {
    "fieldname": "adjustments",
-   "fieldtype": "Data",
+   "fieldtype": "Currency",
    "label": "Adjustments"
   },
   {
    "fieldname": "addl_rate",
    "fieldtype": "Data",
-   "label": "Addl. Rate"
+   "label": "Addl Rate"
+  },
+  {
+   "fieldname": "column_break_wmhr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "grade_chemistry",
+   "fieldtype": "Data",
+   "label": "Grade Chemistry"
+  },
+  {
+   "fieldname": "grade_chemistry_sequence",
+   "fieldtype": "Link",
+   "label": "Grade Chemistry Sequence",
+   "options": "Grade Chemistry Sequence"
+  },
+  {
+   "fieldname": "column_break_lfvi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "grade_rate",
+   "fieldtype": "Currency",
+   "label": "Grade Rate",
+   "precision": "2"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-03-09 15:33:29.132184",
+ "modified": "2026-03-12 12:36:44.789302",
  "modified_by": "Administrator",
  "module": "Hasco",
  "name": "Sauda Booking Item",

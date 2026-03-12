@@ -7,7 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "section_break_sbuz",
-  "part_name",
+  "party_name",
   "party_code",
   "column_break_pmuw",
   "date",
@@ -72,26 +72,23 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "part_name",
-   "fieldtype": "Link",
-   "label": "Party Name",
-   "options": "Customer"
-  },
-  {
    "fieldname": "column_break_pmuw",
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "part_name.custom_customer_code",
+   "bold": 1,
+   "fetch_from": "party_name.custom_customer_code",
    "fieldname": "party_code",
    "fieldtype": "Data",
-   "label": "Party Code"
+   "in_global_search": 1,
+   "label": "Party Code",
+   "read_only": 1
   },
   {
    "fieldname": "communication_medium",
    "fieldtype": "Select",
    "label": "Booking Medium",
-   "options": "\nPhone\nE-Mail\nWhatsApp\nOthers"
+   "options": "Phone\nE-Mail\nWhatsApp\nOthers"
   },
   {
    "fieldname": "section_break_poma",
@@ -101,13 +98,19 @@
    "fieldname": "description",
    "fieldtype": "Small Text",
    "label": "Description"
+  },
+  {
+   "fieldname": "party_name",
+   "fieldtype": "Link",
+   "label": "Party Name",
+   "options": "Customer"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-06 15:33:44.998505",
+ "modified": "2026-03-11 17:15:12.569323",
  "modified_by": "Administrator",
  "module": "Hasco",
  "name": "Sauda Booking",
