@@ -76,13 +76,6 @@
    "label": "Dimension Price"
   },
   {
-   "fieldname": "dimension",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Dimension",
-   "options": "Dimensions"
-  },
-  {
    "fieldname": "column_break_xkuy",
    "fieldtype": "Column Break"
   },
@@ -157,7 +150,7 @@
   },
   {
    "fieldname": "grade_chemistry",
-   "fieldtype": "Data",
+   "fieldtype": "Small Text",
    "label": "Grade Chemistry"
   },
   {
@@ -175,13 +168,20 @@
    "fieldtype": "Currency",
    "label": "Grade Rate",
    "precision": "2"
+  },
+  {
+   "fieldname": "dimension",
+   "fieldtype": "Link",
+   "label": "Dimension",
+   "options": "Dimensions",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-03-12 12:36:44.789302",
+ "modified": "2026-03-16 12:59:08.815459",
  "modified_by": "Administrator",
  "module": "Hasco",
  "name": "Sauda Booking Item",
