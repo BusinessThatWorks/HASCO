@@ -8,6 +8,7 @@
  "field_order": [
   "quantity",
   "mould_type",
+  "order_date",
   "column_break_juno",
   "rate",
   "amount",
@@ -120,10 +121,10 @@
    "precision": "2"
   },
   {
+   "fetch_from": "dimension.type_of_mould",
    "fieldname": "mould_type",
-   "fieldtype": "Link",
-   "label": "Mould Type",
-   "options": "Mould Type"
+   "fieldtype": "Data",
+   "label": "Mould Type"
   },
   {
    "fieldname": "section_break_dhex",
@@ -175,13 +176,18 @@
    "label": "Dimension",
    "options": "Dimensions",
    "reqd": 1
+  },
+  {
+   "fieldname": "order_date",
+   "fieldtype": "Date",
+   "label": "Order Date"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-03-16 12:59:08.815459",
+ "modified": "2026-03-16 16:30:11.742791",
  "modified_by": "Administrator",
  "module": "Hasco",
  "name": "Sauda Booking Item",
