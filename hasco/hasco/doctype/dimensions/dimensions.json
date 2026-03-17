@@ -48,7 +48,7 @@
    "description": "without H.T (Inches)",
    "fieldname": "mould_length",
    "fieldtype": "Data",
-   "label": "Mould Length "
+   "label": "Mould Length"
   },
   {
    "fieldname": "column_break_mdjb",
@@ -101,7 +101,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-17 15:31:00.080415",
+ "modified": "2026-03-17 17:18:52.640371",
  "modified_by": "Administrator",
  "module": "Hasco",
  "name": "Dimensions",
