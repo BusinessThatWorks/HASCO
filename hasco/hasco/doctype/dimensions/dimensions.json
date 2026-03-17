@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "format:{mould_sizes} - {mould_length}",
  "creation": "2026-02-26 15:50:51.926673",
@@ -12,6 +13,7 @@
   "column_break_eogx",
   "average_weight",
   "mould_length",
+  "quantity",
   "column_break_mdjb",
   "no_of_ingot_per_heat",
   "hot_top_type",
@@ -87,35 +89,28 @@
    "fieldname": "id",
    "fieldtype": "Data",
    "label": "ID"
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Data",
+   "label": "Quantity",
+   "precision": "2"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-09 12:08:31.051094",
+ "modified": "2026-03-17 15:31:00.080415",
  "modified_by": "Administrator",
  "module": "Hasco",
  "name": "Dimensions",
  "naming_rule": "Expression (old style)",
  "owner": "Administrator",
- "permissions": [
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "export": 1,
-   "print": 1,
-   "read": 1,
-   "report": 1,
-   "role": "System Manager",
-   "share": 1,
-   "submit": 1,
-   "write": 1
-  }
- ],
+ "permissions": [],
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
+ "search_fields": "type_of_mould",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []
