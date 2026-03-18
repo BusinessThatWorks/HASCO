@@ -116,14 +116,14 @@
    "fieldname": "sauda_type",
    "fieldtype": "Select",
    "label": "Sauda Type",
-   "options": "\nSelf\nConversion"
+   "options": "\nSale\nConversion"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-16 14:40:32.694468",
+ "modified": "2026-03-18 12:04:08.414721",
  "modified_by": "Administrator",
  "module": "Hasco",
  "name": "Sauda Booking",
