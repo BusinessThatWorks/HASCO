@@ -38,7 +38,7 @@
   {
    "fetch_from": "dimension.quantity",
    "fieldname": "quantity",
-   "fieldtype": "Float",
+   "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Quantity",
    "precision": "2"
@@ -188,7 +188,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-03-17 18:17:56.859310",
+ "modified": "2026-03-18 10:41:30.691917",
  "modified_by": "Administrator",
  "module": "Hasco",
  "name": "Sauda Booking Item",
