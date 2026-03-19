@@ -1,0 +1,121 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-18 15:44:52.593965",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "grade_section",
+  "grade",
+  "mould_size",
+  "link_vbsl",
+  "dimension",
+  "column_break_wklt",
+  "hot_top_type",
+  "order_type",
+  "order_status",
+  "section_break_ygtj",
+  "pick",
+  "column_break_zcit",
+  "pick_date",
+  "section_break_pnqm",
+  "other_information"
+ ],
+ "fields": [
+  {
+   "fieldname": "grade",
+   "fieldtype": "Link",
+   "label": "Grade",
+   "options": "Item"
+  },
+  {
+   "fieldname": "grade_section",
+   "fieldtype": "Section Break",
+   "label": "Grade details"
+  },
+  {
+   "fieldname": "link_vbsl",
+   "fieldtype": "Link",
+   "label": "Process",
+   "options": "Process"
+  },
+  {
+   "fetch_from": "dimension.mould_sizes",
+   "fieldname": "mould_size",
+   "fieldtype": "Data",
+   "label": "Mould Size"
+  },
+  {
+   "fieldname": "column_break_wklt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "dimension.hot_top_type",
+   "fieldname": "hot_top_type",
+   "fieldtype": "Data",
+   "label": "Hot Top Type"
+  },
+  {
+   "fieldname": "order_type",
+   "fieldtype": "Data",
+   "label": "Order Type",
+   "options": "\nSale\nConversion"
+  },
+  {
+   "fieldname": "order_status",
+   "fieldtype": "Select",
+   "label": "Order Status",
+   "options": "Hold by Party\nHold by Us"
+  },
+  {
+   "fieldname": "section_break_ygtj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "pick",
+   "fieldtype": "Select",
+   "label": "Pick",
+   "options": "Pending\nDone"
+  },
+  {
+   "fieldname": "column_break_zcit",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pick_date",
+   "fieldtype": "Date",
+   "label": "Pick Date"
+  },
+  {
+   "fieldname": "section_break_pnqm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "other_information",
+   "fieldtype": "Small Text",
+   "label": "Other Information"
+  },
+  {
+   "fieldname": "dimension",
+   "fieldtype": "Link",
+   "label": "Dimension",
+   "options": "Dimensions"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-03-18 17:01:39.137925",
+ "modified_by": "Administrator",
+ "module": "Hasco",
+ "name": "Pending Casting Items",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -5,18 +5,55 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "section_break_42wh"
+  "party_name",
+  "party_code",
+  "column_break_gbut",
+  "order_date",
+  "sales_order",
+  "section_break_xpdm",
+  "table_jthm"
  ],
  "fields": [
   {
-   "fieldname": "section_break_42wh",
+   "fieldname": "party_name",
+   "fieldtype": "Link",
+   "label": "Party Name",
+   "options": "Customer"
+  },
+  {
+   "fetch_from": "party_name.custom_customer_code",
+   "fieldname": "party_code",
+   "fieldtype": "Data",
+   "label": "Party Code"
+  },
+  {
+   "fieldname": "column_break_gbut",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "order_date",
+   "fieldtype": "Date",
+   "label": "Order Date"
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Data",
+   "label": "Sales Order "
+  },
+  {
+   "fieldname": "section_break_xpdm",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "table_jthm",
+   "fieldtype": "Table",
+   "options": "Pending Casting Items"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-16 14:44:20.431675",
+ "modified": "2026-03-18 16:38:39.060248",
  "modified_by": "Administrator",
  "module": "Hasco",
  "name": "Pending Casting List",

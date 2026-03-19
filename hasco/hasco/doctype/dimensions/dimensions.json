@@ -91,6 +91,7 @@
    "label": "ID"
   },
   {
+   "description": "in MT",
    "fieldname": "quantity",
    "fieldtype": "Data",
    "label": "Quantity",
@@ -101,7 +102,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-17 17:18:52.640371",
+ "modified": "2026-03-18 18:06:18.052763",
  "modified_by": "Administrator",
  "module": "Hasco",
  "name": "Dimensions",
