@@ -10,8 +10,9 @@
   "column_break_gbut",
   "order_date",
   "sales_order",
-  "section_break_xpdm",
-  "table_jthm"
+  "section_break_rodo",
+  "table_jthm",
+  "description"
  ],
  "fields": [
   {
@@ -41,19 +42,24 @@
    "label": "Sales Order "
   },
   {
-   "fieldname": "section_break_xpdm",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "table_jthm",
    "fieldtype": "Table",
    "options": "Pending Casting Items"
+  },
+  {
+   "fieldname": "section_break_rodo",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text",
+   "label": "Description"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-18 16:38:39.060248",
+ "modified": "2026-03-19 10:39:27.325584",
  "modified_by": "Administrator",
  "module": "Hasco",
  "name": "Pending Casting List",
