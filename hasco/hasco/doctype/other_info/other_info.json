@@ -1,0 +1,194 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-23 14:30:05.086504",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "chemical_analysis_section_1",
+  "c",
+  "mo",
+  "cu",
+  "column_break_scko",
+  "mn",
+  "ni",
+  "sn",
+  "column_break_gpfb",
+  "v",
+  "si",
+  "nb",
+  "column_break_ftlj",
+  "s",
+  "al",
+  "pb",
+  "column_break_krxu",
+  "p",
+  "w",
+  "zn",
+  "column_break_mngf",
+  "cr",
+  "co",
+  "other_info"
+ ],
+ "fields": [
+  {
+   "fieldname": "c",
+   "fieldtype": "Float",
+   "label": "C%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "mo",
+   "fieldtype": "Float",
+   "label": "Mo%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "cu",
+   "fieldtype": "Float",
+   "label": "Cu%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_scko",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mn",
+   "fieldtype": "Float",
+   "label": "Mn%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "ni",
+   "fieldtype": "Float",
+   "label": "Ni%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "sn",
+   "fieldtype": "Float",
+   "label": "Sn%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_gpfb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "si",
+   "fieldtype": "Float",
+   "label": "Si%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "v",
+   "fieldtype": "Float",
+   "label": "V%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "nb",
+   "fieldtype": "Float",
+   "label": "Nb%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_ftlj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "s",
+   "fieldtype": "Float",
+   "label": "S%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "al",
+   "fieldtype": "Float",
+   "label": "Al%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "pb",
+   "fieldtype": "Float",
+   "label": "Pb%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_krxu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "p",
+   "fieldtype": "Float",
+   "label": "P%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "w",
+   "fieldtype": "Float",
+   "label": "W%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "zn",
+   "fieldtype": "Float",
+   "label": "Zn%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_mngf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cr",
+   "fieldtype": "Float",
+   "label": "Cr%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "co",
+   "fieldtype": "Float",
+   "label": "Co%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "chemical_analysis_section_1",
+   "fieldtype": "Section Break",
+   "label": "Grade Chemistry"
+  },
+  {
+   "fieldname": "other_info",
+   "fieldtype": "Small Text",
+   "label": "Other Info"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-03-23 16:36:21.538914",
+ "modified_by": "Administrator",
+ "module": "Hasco",
+ "name": "Other Info",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
