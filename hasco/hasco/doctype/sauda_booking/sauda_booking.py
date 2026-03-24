@@ -7,6 +7,7 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 from frappe.model.mapper import get_mapped_doc
+from frappe.model.utils import get_fetch_values
 from frappe.utils import flt
 
 
@@ -126,9 +127,16 @@ def _make_sales_order(source_name: str, target_doc=None, ignore_permissions=Fals
 				)
 			)
 
+		# Copy Item-linked fields configured as fetch_from item_code.* (e.g. HSN/SAC on India GST).
+		for fieldname, value in get_fetch_values("Sales Order Item", "item_code", target.item_code).items():
+			if value is not None:
+				target.set(fieldname, value)
+
 		target.qty = flt(source.quantity)
 		target.rate = flt(source.rate)
 		target.amount = flt(source.amount)
+		if source_parent and source_parent.get("name"):
+			target.custom_reference = source_parent.name
 
 	doclist = get_mapped_doc(
 		"Sauda Booking",
