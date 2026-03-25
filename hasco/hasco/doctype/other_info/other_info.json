@@ -28,7 +28,9 @@
   "column_break_mngf",
   "cr",
   "co",
-  "other_info"
+  "ti",
+  "section_break_llqi",
+  "other_informations"
  ],
  "fields": [
   {
@@ -159,15 +161,24 @@
    "label": "Grade Chemistry"
   },
   {
-   "fieldname": "other_info",
+   "fieldname": "ti",
+   "fieldtype": "Data",
+   "label": "Ti%"
+  },
+  {
+   "fieldname": "section_break_llqi",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "other_informations",
    "fieldtype": "Small Text",
-   "label": "Other Info"
+   "label": "Other Informations"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-23 16:36:21.538914",
+ "modified": "2026-03-24 14:46:06.861839",
  "modified_by": "Administrator",
  "module": "Hasco",
  "name": "Other Info",

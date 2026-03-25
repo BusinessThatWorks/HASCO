@@ -27,6 +27,7 @@
   {
    "fieldname": "grade",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Grade",
    "options": "Item"
   },
@@ -38,6 +39,7 @@
   {
    "fieldname": "link_vbsl",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Process",
    "options": "Process"
   },
@@ -55,19 +57,22 @@
    "fetch_from": "dimension.hot_top_type",
    "fieldname": "hot_top_type",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Hot Top Type"
   },
   {
    "fieldname": "order_type",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Order Type",
    "options": "\nSale\nConversion"
   },
   {
    "fieldname": "order_status",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Order Status",
-   "options": "Hold by Party\nHold by Us"
+   "options": "\nHold by Party\nHold by Us"
   },
   {
    "fieldname": "section_break_ygtj",
@@ -76,8 +81,9 @@
   {
    "fieldname": "pick",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Pick",
-   "options": "Pending\nDone"
+   "options": "\nPending\nDone"
   },
   {
    "fieldname": "column_break_zcit",
@@ -86,6 +92,7 @@
   {
    "fieldname": "pick_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Pick Date"
   },
   {
@@ -100,12 +107,14 @@
   {
    "fieldname": "dimension",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Dimension",
    "options": "Dimensions"
   },
   {
    "fieldname": "other_info",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Other info",
    "options": "Other Info"
   }
@@ -114,7 +123,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-03-23 16:44:14.553029",
+ "modified": "2026-03-25 16:57:03.728237",
  "modified_by": "Administrator",
  "module": "Hasco",
  "name": "Pending Casting Items",

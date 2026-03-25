@@ -1,0 +1,55 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-24 17:14:32.892728",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "check_yphz",
+  "back_qty",
+  "tp",
+  "tp_qty"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "check_yphz",
+   "fieldtype": "Check",
+   "label": "Back"
+  },
+  {
+   "depends_on": "eval:doc.back",
+   "fieldname": "back_qty",
+   "fieldtype": "Int",
+   "label": "Back Qty"
+  },
+  {
+   "default": "0",
+   "fieldname": "tp",
+   "fieldtype": "Check",
+   "label": "TP"
+  },
+  {
+   "depends_on": "eval:doc.tp",
+   "fieldname": "tp_qty",
+   "fieldtype": "Int",
+   "label": "TP Qty"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-03-24 17:16:55.958551",
+ "modified_by": "Administrator",
+ "module": "Hasco",
+ "name": "Back or TP",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

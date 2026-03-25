@@ -1,0 +1,52 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-25 17:04:19.685380",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "party_name",
+  "party_code"
+ ],
+ "fields": [
+  {
+   "fieldname": "party_name",
+   "fieldtype": "Link",
+   "label": "Party Name",
+   "options": "Customer"
+  },
+  {
+   "fetch_from": "party_name.custom_customer_code",
+   "fieldname": "party_code",
+   "fieldtype": "Data",
+   "label": "Party Code"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-03-25 17:07:22.261143",
+ "modified_by": "Administrator",
+ "module": "Hasco",
+ "name": "Casting Program",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
