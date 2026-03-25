@@ -206,7 +206,8 @@ class TestSaudaBooking(FrappeTestCase):
 		self.assertEqual(so.customer, customer.name)
 		self.assertEqual(str(so.transaction_date), str(booking.date))
 		self.assertEqual(so.custom_booking_medium, booking.communication_medium)
-		self.assertEqual(so.custom_sauda_booking_id, booking.name)
+		# Header custom_sauda_booking_id is removed; mapper stores reference per item.
+		self.assertTrue(all(d.custom_reference == booking.name for d in so.items))
 
 		so_item_codes = [d.item_code for d in so.items]
 		self.assertIn(variant_1.item_code, so_item_codes)
@@ -218,6 +219,9 @@ class TestSaudaBooking(FrappeTestCase):
 				self.assertEqual(flt(so_item.qty), flt(dimension_1.quantity))
 				self.assertEqual(flt(so_item.rate), 100)
 				self.assertEqual(flt(so_item.amount), flt(dimension_1.quantity) * 100)
+				self.assertEqual(so_item.custom_type_of_mould, dimension_1.type_of_mould)
+			elif so_item.item_code == variant_2.item_code:
+				self.assertEqual(so_item.custom_type_of_mould, dimension_2.type_of_mould)
 
 	def test_make_sales_order_filtered_children(self):
 		attribute_name = f"Test Dimension Attribute - {frappe.generate_hash(6)}"

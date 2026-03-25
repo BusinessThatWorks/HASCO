@@ -52,10 +52,6 @@ def _make_sales_order(source_name: str, target_doc=None, ignore_permissions=Fals
 			target.transaction_date = source.date
 		if source.get("communication_medium"):
 			target.custom_booking_medium = source.communication_medium
-		# If multiple Sauda Bookings are mapped into one Sales Order,
-		# keep the first mapped ID to avoid constant overwrites.
-		if source.get("name") and not target.get("custom_sauda_booking_id"):
-			target.custom_sauda_booking_id = source.name
 
 		target.run_method("set_missing_values")
 		target.run_method("calculate_taxes_and_totals")
@@ -126,6 +122,15 @@ def _make_sales_order(source_name: str, target_doc=None, ignore_permissions=Fals
 					source.get("grade"), source.get("dimension")
 				)
 			)
+
+		# Map "Type Of Mould" into Sales Order Item child table.
+		mould_type = source.get("mould_type")
+		if not mould_type and source.get("dimension"):
+			dimension_doc = frappe.get_cached_doc("Dimensions", source.get("dimension"))
+			mould_type = dimension_doc.get("type_of_mould")
+
+		if mould_type and target.meta.get_field("custom_type_of_mould"):
+			target.custom_type_of_mould = mould_type
 
 		# Copy Item-linked fields configured as fetch_from item_code.* (e.g. HSN/SAC on India GST).
 		for fieldname, value in get_fetch_values("Sales Order Item", "item_code", target.item_code).items():
