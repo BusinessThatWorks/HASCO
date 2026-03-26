@@ -6,4 +6,6 @@
 # Patches added in this section will be executed after doctypes are migrated
 hasco.patches.remove_sauda_booking_id_custom_field
 hasco.patches.update_sales_order_print_format
+hasco.patches.update_sales_order_print_format_sauda_scope
 hasco.patches.update_pending_casting_print_format
+hasco.patches.make_gst_hsn_code_list_view
