@@ -154,3 +154,57 @@ def fetch_items_from_sales_order(sales_order: str) -> dict:
 		"order_date": so.get("transaction_date"),
 		"items": out_items,
 	}
+
+
+@frappe.whitelist()
+def make_pending_casting_list_from_sales_order(sales_order: str) -> dict:
+	"""Create (or update) a Pending Casting List from a Sales Order.
+
+	- If a non-cancelled Pending Casting List already exists for the same Sales Order,
+	  it will be updated (only when docstatus=0).
+	- If it exists and is submitted (docstatus=1), we block updating to avoid tampering.
+	"""
+	if not sales_order:
+		frappe.throw(_("Sales Order is required"))
+
+	items_data = fetch_items_from_sales_order(sales_order) or {}
+
+	existing = frappe.get_all(
+		"Pending Casting List",
+		filters={"sales_order": sales_order, "docstatus": ["!=", 2]},
+		fields=["name", "docstatus"],
+		order_by="modified desc",
+		limit=1,
+	)
+
+	if existing:
+		pl = frappe.get_doc("Pending Casting List", existing[0].name)
+		if pl.docstatus == 1:
+			frappe.throw(
+				_(
+					"Pending Casting List {0} is already submitted. Create a new one manually if required."
+				).format(pl.name)
+			)
+
+		pl.party_name = items_data.get("party_name")
+		pl.order_date = items_data.get("order_date")
+		pl.sales_order = sales_order
+		pl.clear_table("table_jthm")
+
+		for row in items_data.get("items", []) or []:
+			pl.append("table_jthm", row)
+
+		pl.save(ignore_permissions=True)
+		return {"name": pl.name, "updated": True}
+
+	# Create new draft Pending Casting List.
+	pl = frappe.new_doc("Pending Casting List")
+	pl.sales_order = sales_order
+	pl.party_name = items_data.get("party_name")
+	pl.order_date = items_data.get("order_date")
+
+	for row in items_data.get("items", []) or []:
+		pl.append("table_jthm", row)
+
+	pl.insert(ignore_permissions=True)
+	return {"name": pl.name, "created": True}
