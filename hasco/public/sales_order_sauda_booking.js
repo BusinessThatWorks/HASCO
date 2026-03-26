@@ -41,6 +41,7 @@ frappe.ui.form.on("Sales Order", {
 			__("Sauda Booking"),
 			async function () {
 				const mapped_rows = await frappe.db.get_list("Sales Order Item", {
+					parent: "Sales Order",
 					filters: [
 						["docstatus", "!=", 2],
 						["custom_reference", "!=", ""],
