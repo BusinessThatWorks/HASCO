@@ -1,0 +1,130 @@
+name: Hasco CI
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+  push:
+    branches:
+      - develop
+      - main
+      - "feature/**"
+
+jobs:
+  lint-and-validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install pre-commit
+        run: |
+          python -m pip install --upgrade pip
+          pip install pre-commit
+
+      - name: Run pre-commit hooks
+        run: pre-commit run --all-files --show-diff-on-failure --color=always
+
+      - name: Validate Python syntax
+        run: python -m compileall -q hasco
+
+  frappe-tests:
+    runs-on: ubuntu-latest
+
+    services:
+      mariadb:
+        image: mariadb:10.6
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -proot"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+      redis:
+        image: redis:7
+        ports:
+          - 6379:6379
+
+    env:
+      FRAPPE_BRANCH: version-15
+      SITE_NAME: ci.localhost
+      ADMIN_PASSWORD: admin
+      DB_ROOT_PASSWORD: root
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            git \
+            redis-tools \
+            mariadb-client \
+            libmariadb-dev \
+            libmariadb-dev-compat \
+            xvfb
+
+      - name: Install bench CLI
+        run: |
+          python -m pip install --upgrade pip
+          pip install frappe-bench
+
+      - name: Initialize bench
+        run: |
+          bench init frappe-bench --frappe-branch "$FRAPPE_BRANCH" --skip-redis-config-generation
+
+      - name: Configure bench and install app
+        working-directory: frappe-bench
+        run: |
+          bench set-config -g db_host 127.0.0.1
+          bench set-config -g redis_cache "redis://127.0.0.1:6379"
+          bench set-config -g redis_queue "redis://127.0.0.1:6379"
+          bench set-config -g redis_socketio "redis://127.0.0.1:6379"
+          bench get-app --soft-link hasco "$GITHUB_WORKSPACE"
+
+      - name: Create site
+        working-directory: frappe-bench
+        run: |
+          bench new-site "$SITE_NAME" \
+            --db-root-password "$DB_ROOT_PASSWORD" \
+            --admin-password "$ADMIN_PASSWORD" \
+            --no-mariadb-socket
+
+      - name: Install app and migrate
+        working-directory: frappe-bench
+        run: |
+          bench --site "$SITE_NAME" install-app hasco
+          bench --site "$SITE_NAME" migrate
+
+      - name: Run app tests
+        working-directory: frappe-bench
+        run: bench --site "$SITE_NAME" run-tests --app hasco

@@ -40,13 +40,18 @@ frappe.ui.form.on("Sales Order", {
 		frm.add_custom_button(
 			__("Sauda Booking"),
 			async function () {
-				const mapped_rows = await frappe.db.get_list("Sales Order Item", {
-					filters: [
-						["docstatus", "!=", 2],
-						["custom_reference", "!=", ""],
-					],
-					fields: ["custom_reference"],
-					limit_page_length: 0,
+				const { message: mapped_rows = [] } = await frappe.call({
+					method: "frappe.client.get_list",
+					args: {
+						doctype: "Sales Order Item",
+						parent: "Sales Order",
+						filters: [
+							["docstatus", "!=", 2],
+							["custom_reference", "!=", ""],
+						],
+						fields: ["custom_reference"],
+						limit_page_length: 0,
+					},
 				});
 				const mapped_sauda_bookings = [
 					...new Set((mapped_rows || []).map((d) => d.custom_reference).filter(Boolean)),
