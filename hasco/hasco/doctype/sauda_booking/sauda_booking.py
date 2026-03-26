@@ -39,6 +39,30 @@ def _make_sales_order(source_name: str, target_doc=None, ignore_permissions=Fals
 	if isinstance(args, str):
 		args = json.loads(args)
 
+	target_doc_data = target_doc
+	if isinstance(target_doc_data, str):
+		target_doc_data = json.loads(target_doc_data)
+
+	# Also block remapping in the same unsaved Sales Order (in-memory items).
+	existing_refs_in_target = set()
+	if target_doc_data and hasattr(target_doc_data, "get"):
+		for row in target_doc_data.get("items", []) or []:
+			ref = row.get("custom_reference") if hasattr(row, "get") else None
+			if ref:
+				existing_refs_in_target.add(ref)
+	if source_name in existing_refs_in_target:
+		frappe.throw(_("Sauda Booking {0} is already mapped to this Sales Order.").format(source_name))
+
+	already_mapped = frappe.db.exists(
+		"Sales Order Item",
+		{
+			"custom_reference": source_name,
+			"docstatus": ("!=", 2),
+		},
+	)
+	if already_mapped:
+		frappe.throw(_("Sauda Booking {0} is already mapped to a Sales Order.").format(source_name))
+
 	# Cache resolved Item variants to avoid repeated DB lookups.
 	resolved_item_cache = {}
 
