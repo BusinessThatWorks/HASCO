@@ -6,12 +6,16 @@
  "engine": "InnoDB",
  "field_order": [
   "party_name",
-  "party_code"
+  "party_code",
+  "column_break_olns",
+  "order_date",
+  "sales_order"
  ],
  "fields": [
   {
    "fieldname": "party_name",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Party Name",
    "options": "Customer"
   },
@@ -19,13 +23,28 @@
    "fetch_from": "party_name.custom_customer_code",
    "fieldname": "party_code",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Party Code"
+  },
+  {
+   "fieldname": "column_break_olns",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "order_date",
+   "fieldtype": "Date",
+   "label": "Order Date"
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Data",
+   "label": "Sales Order"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-25 17:07:22.261143",
+ "modified": "2026-03-25 17:23:33.595379",
  "modified_by": "Administrator",
  "module": "Hasco",
  "name": "Casting Program",

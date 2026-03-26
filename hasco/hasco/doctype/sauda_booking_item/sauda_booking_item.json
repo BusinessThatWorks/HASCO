@@ -39,7 +39,6 @@
    "fetch_from": "dimension.quantity",
    "fieldname": "quantity",
    "fieldtype": "Data",
-   "in_list_view": 1,
    "label": "Quantity (MT)",
    "precision": "2"
   },
@@ -50,7 +49,6 @@
   {
    "fieldname": "amount",
    "fieldtype": "Currency",
-   "in_list_view": 1,
    "label": "Amount",
    "precision": "2"
   },
@@ -60,6 +58,7 @@
    "label": "Grade Price"
   },
   {
+   "columns": 1,
    "fieldname": "grade",
    "fieldtype": "Link",
    "in_list_view": 1,
@@ -68,8 +67,10 @@
    "options": "Item"
   },
   {
+   "columns": 1,
    "fieldname": "rate",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "FInal Rate"
   },
   {
@@ -82,22 +83,28 @@
    "fieldtype": "Column Break"
   },
   {
+   "columns": 1,
    "fetch_from": "dimension.rate",
    "fieldname": "dimension_rate",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "Dim Rate ",
    "precision": "2"
   },
   {
+   "columns": 1,
    "fieldname": "item_process",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Process",
    "options": "Process"
   },
   {
+   "columns": 1,
    "fetch_from": "item_process.rate",
    "fieldname": "attribute_name",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Proc Rate"
   },
   {
@@ -115,9 +122,11 @@
    "fieldtype": "Column Break"
   },
   {
+   "columns": 1,
    "fetch_from": "base_price_id.base_rate",
    "fieldname": "base_price",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "Base Price",
    "precision": "2"
   },
@@ -137,8 +146,10 @@
    "label": "Addl Items"
   },
   {
+   "columns": 1,
    "fieldname": "adjustments",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "Adjustments"
   },
   {
@@ -166,21 +177,27 @@
    "fieldtype": "Column Break"
   },
   {
+   "columns": 1,
    "fieldname": "grade_rate",
    "fieldtype": "Currency",
+   "in_list_view": 1,
    "label": "Grade Rate",
    "precision": "2"
   },
   {
+   "columns": 1,
    "fieldname": "dimension",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Dimension",
    "options": "Dimensions",
    "reqd": 1
   },
   {
+   "columns": 1,
    "fieldname": "order_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Order Date"
   }
  ],
@@ -188,7 +205,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-03-18 18:13:54.668715",
+ "modified": "2026-03-26 11:13:56.428656",
  "modified_by": "Administrator",
  "module": "Hasco",
  "name": "Sauda Booking Item",

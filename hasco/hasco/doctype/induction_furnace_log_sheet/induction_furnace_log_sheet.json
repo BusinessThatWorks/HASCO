@@ -1,0 +1,581 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-03-24 15:25:20.711847",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "shift",
+  "date",
+  "heat_no",
+  "grade",
+  "tap_temp",
+  "laddle_temp",
+  "final_reading",
+  "initial_reading",
+  "power_consumed",
+  "power__tonn",
+  "column_break_ctkh",
+  "pre_tap_time",
+  "power_on_time",
+  "tapping_time",
+  "duration",
+  "frequency",
+  "9_mt",
+  "5_mt",
+  "rolling",
+  "running_crucible",
+  "running",
+  "crucible_b1_tab",
+  "b1_section",
+  "patching_life_b1",
+  "bottom_life_b1",
+  "r_mass_qty_in_kg_b1",
+  "temp_tips_nos_b1",
+  "redax_in_bags_b1",
+  "deoxider_b1",
+  "crucible_b2_tab",
+  "b2_section",
+  "patching_life_b2",
+  "bottom_life_b2",
+  "r_mass_qty_in_kg_b2",
+  "temp_tips_nos_b2",
+  "redax_in_bags_b2",
+  "deoxider_copy_b2",
+  "ferro_alloys_tab",
+  "hc_si_mn",
+  "mc_si_mn",
+  "hc_fe_mn",
+  "fe_si",
+  "hc_fe_cr",
+  "l_c_cr",
+  "casi",
+  "ai_bar",
+  "column_break_hzsc",
+  "fe_ni",
+  "l_c_cr_copy_copy_copy_copy",
+  "fe_v",
+  "cpc_ord__ls",
+  "lime",
+  "synthetic_slag",
+  "mo_dust",
+  "production_details_tab",
+  "yield_",
+  "section_break_gosc",
+  "table_hwrf",
+  "1st_charging_tab",
+  "1st_charging",
+  "time",
+  "column_break_ugal",
+  "total",
+  "chemical_analysis_section",
+  "c",
+  "p",
+  "v",
+  "cu",
+  "zn",
+  "column_break_djff",
+  "mn",
+  "cr",
+  "al",
+  "sn",
+  "ti",
+  "column_break_rbwa",
+  "si",
+  "mo",
+  "w",
+  "nb",
+  "column_break_cprw",
+  "s",
+  "ni",
+  "co",
+  "pb"
+ ],
+ "fields": [
+  {
+   "fieldname": "shift",
+   "fieldtype": "Select",
+   "label": "Shift",
+   "options": "\nA\nB\nC"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "heat_no",
+   "fieldtype": "Data",
+   "label": "Heat No"
+  },
+  {
+   "fieldname": "grade",
+   "fieldtype": "Link",
+   "label": "Grade",
+   "options": "Item"
+  },
+  {
+   "fieldname": "tap_temp",
+   "fieldtype": "Data",
+   "label": "Tap Temp"
+  },
+  {
+   "fieldname": "laddle_temp",
+   "fieldtype": "Data",
+   "label": "Laddle Temp"
+  },
+  {
+   "fieldname": "final_reading",
+   "fieldtype": "Float",
+   "label": "Final Reading",
+   "precision": "1"
+  },
+  {
+   "fieldname": "initial_reading",
+   "fieldtype": "Float",
+   "label": "Initial Reading",
+   "precision": "1"
+  },
+  {
+   "fieldname": "power_consumed",
+   "fieldtype": "Float",
+   "label": "Power Consumed",
+   "precision": "1"
+  },
+  {
+   "fieldname": "power__tonn",
+   "fieldtype": "Data",
+   "label": "Power / Tonn"
+  },
+  {
+   "fieldname": "column_break_ctkh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pre_tap_time",
+   "fieldtype": "Time",
+   "label": "Pre Tap Time"
+  },
+  {
+   "fieldname": "power_on_time",
+   "fieldtype": "Time",
+   "label": "Power on Time"
+  },
+  {
+   "fieldname": "tapping_time",
+   "fieldtype": "Time",
+   "label": "Tapping Time"
+  },
+  {
+   "fieldname": "duration",
+   "fieldtype": "Duration",
+   "label": "Duration"
+  },
+  {
+   "fieldname": "frequency",
+   "fieldtype": "Data",
+   "label": "Frequency"
+  },
+  {
+   "default": "0",
+   "fieldname": "9_mt",
+   "fieldtype": "Check",
+   "label": "9 MT"
+  },
+  {
+   "default": "0",
+   "fieldname": "5_mt",
+   "fieldtype": "Check",
+   "label": "5 MT"
+  },
+  {
+   "default": "0",
+   "fieldname": "rolling",
+   "fieldtype": "Check",
+   "label": "Rolling"
+  },
+  {
+   "fieldname": "running_crucible",
+   "fieldtype": "Data",
+   "label": "Running Crucible"
+  },
+  {
+   "fieldname": "running",
+   "fieldtype": "Select",
+   "label": "Running",
+   "options": "\n5 MT\n9 MT"
+  },
+  {
+   "fieldname": "crucible_b1_tab",
+   "fieldtype": "Tab Break",
+   "label": "Crucible B1"
+  },
+  {
+   "fieldname": "crucible_b2_tab",
+   "fieldtype": "Tab Break",
+   "label": "Crucible B2"
+  },
+  {
+   "fieldname": "b1_section",
+   "fieldtype": "Section Break",
+   "label": "B1"
+  },
+  {
+   "fieldname": "patching_life_b1",
+   "fieldtype": "Data",
+   "label": "Patching Life"
+  },
+  {
+   "fieldname": "bottom_life_b1",
+   "fieldtype": "Data",
+   "label": "Bottom Life"
+  },
+  {
+   "fieldname": "r_mass_qty_in_kg_b1",
+   "fieldtype": "Float",
+   "label": "R Mass Qty in Kg",
+   "precision": "3"
+  },
+  {
+   "fieldname": "temp_tips_nos_b1",
+   "fieldtype": "Int",
+   "label": "Temp Tips Nos"
+  },
+  {
+   "fieldname": "redax_in_bags_b1",
+   "fieldtype": "Int",
+   "label": "Redax in Bags"
+  },
+  {
+   "fieldname": "deoxider_b1",
+   "fieldtype": "Data",
+   "label": "Deoxider"
+  },
+  {
+   "fieldname": "b2_section",
+   "fieldtype": "Section Break",
+   "label": "B2"
+  },
+  {
+   "fieldname": "patching_life_b2",
+   "fieldtype": "Data",
+   "label": "Patching Life"
+  },
+  {
+   "fieldname": "bottom_life_b2",
+   "fieldtype": "Data",
+   "label": "Bottom Life"
+  },
+  {
+   "fieldname": "r_mass_qty_in_kg_b2",
+   "fieldtype": "Float",
+   "label": "R Mass Qty in Kg",
+   "precision": "3"
+  },
+  {
+   "fieldname": "temp_tips_nos_b2",
+   "fieldtype": "Int",
+   "label": "Temp Tips Nos"
+  },
+  {
+   "fieldname": "redax_in_bags_b2",
+   "fieldtype": "Int",
+   "label": "Redax in Bags"
+  },
+  {
+   "fieldname": "deoxider_copy_b2",
+   "fieldtype": "Data",
+   "label": "Deoxider Copy"
+  },
+  {
+   "fieldname": "ferro_alloys_tab",
+   "fieldtype": "Tab Break",
+   "label": "Ferro Alloys"
+  },
+  {
+   "description": "Kg",
+   "fieldname": "hc_si_mn",
+   "fieldtype": "Int",
+   "label": "HC Si Mn"
+  },
+  {
+   "description": "Kg",
+   "fieldname": "mc_si_mn",
+   "fieldtype": "Int",
+   "label": "MC Si Mn"
+  },
+  {
+   "description": "Kg",
+   "fieldname": "hc_fe_mn",
+   "fieldtype": "Int",
+   "label": "HC Fe Mn"
+  },
+  {
+   "description": "Kg",
+   "fieldname": "fe_si",
+   "fieldtype": "Int",
+   "label": "Fe Si"
+  },
+  {
+   "description": "Kg",
+   "fieldname": "hc_fe_cr",
+   "fieldtype": "Int",
+   "label": "HC Fe Cr"
+  },
+  {
+   "description": "Kg",
+   "fieldname": "l_c_cr",
+   "fieldtype": "Int",
+   "label": "L C Cr"
+  },
+  {
+   "fieldname": "column_break_hzsc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Kg",
+   "fieldname": "casi",
+   "fieldtype": "Int",
+   "label": "CaSi"
+  },
+  {
+   "description": "Kg",
+   "fieldname": "ai_bar",
+   "fieldtype": "Int",
+   "label": "Al Bar"
+  },
+  {
+   "description": "Kg",
+   "fieldname": "fe_ni",
+   "fieldtype": "Int",
+   "label": "Fe Ni"
+  },
+  {
+   "description": "Kg",
+   "fieldname": "l_c_cr_copy_copy_copy_copy",
+   "fieldtype": "Int",
+   "label": "Fe Mo"
+  },
+  {
+   "description": "Kg",
+   "fieldname": "fe_v",
+   "fieldtype": "Int",
+   "label": "Fe V"
+  },
+  {
+   "fieldname": "cpc_ord__ls",
+   "fieldtype": "Data",
+   "label": "CPC-Ord / LS"
+  },
+  {
+   "fieldname": "lime",
+   "fieldtype": "Data",
+   "label": "Lime"
+  },
+  {
+   "fieldname": "synthetic_slag",
+   "fieldtype": "Data",
+   "label": "Synthetic Slag"
+  },
+  {
+   "fieldname": "mo_dust",
+   "fieldtype": "Data",
+   "label": "Mo Dust"
+  },
+  {
+   "fieldname": "production_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Production Details"
+  },
+  {
+   "fieldname": "yield_",
+   "fieldtype": "Float",
+   "label": "Yield %",
+   "precision": "2"
+  },
+  {
+   "fieldname": "section_break_gosc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "table_hwrf",
+   "fieldtype": "Table",
+   "options": "Log Sheet Prod Details"
+  },
+  {
+   "fieldname": "1st_charging_tab",
+   "fieldtype": "Tab Break",
+   "label": "1st Charging"
+  },
+  {
+   "fieldname": "1st_charging",
+   "fieldtype": "Data",
+   "label": "1st Charging"
+  },
+  {
+   "fieldname": "time",
+   "fieldtype": "Data",
+   "label": "Time"
+  },
+  {
+   "fieldname": "chemical_analysis_section",
+   "fieldtype": "Section Break",
+   "label": "Chemical Analysis - 1st Sample"
+  },
+  {
+   "fieldname": "c",
+   "fieldtype": "Float",
+   "label": "C%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "p",
+   "fieldtype": "Float",
+   "label": "P%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "v",
+   "fieldtype": "Float",
+   "label": "V%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "cu",
+   "fieldtype": "Float",
+   "label": "Cu%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "zn",
+   "fieldtype": "Float",
+   "label": "Zn%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_djff",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "mn",
+   "fieldtype": "Float",
+   "label": "Mn%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "cr",
+   "fieldtype": "Float",
+   "label": "Cr%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "al",
+   "fieldtype": "Float",
+   "label": "Al%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "sn",
+   "fieldtype": "Float",
+   "label": "Sn%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_rbwa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "si",
+   "fieldtype": "Float",
+   "label": "Si%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "mo",
+   "fieldtype": "Float",
+   "label": "Mo%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "w",
+   "fieldtype": "Float",
+   "label": "W%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "nb",
+   "fieldtype": "Float",
+   "label": "Nb%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "column_break_cprw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "s",
+   "fieldtype": "Float",
+   "label": "S%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "ni",
+   "fieldtype": "Float",
+   "label": "Ni%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "co",
+   "fieldtype": "Float",
+   "label": "Co%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "pb",
+   "fieldtype": "Float",
+   "label": "Pb%",
+   "precision": "2"
+  },
+  {
+   "fieldname": "ti",
+   "fieldtype": "Float",
+   "label": "Ti%"
+  },
+  {
+   "fieldname": "column_break_ugal",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total",
+   "fieldtype": "Int",
+   "label": "Total"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-03-25 14:58:05.414058",
+ "modified_by": "Administrator",
+ "module": "Hasco",
+ "name": "Induction Furnace Log Sheet",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
