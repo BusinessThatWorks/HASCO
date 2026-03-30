@@ -8,11 +8,80 @@ from frappe import _
 from frappe.model.document import Document
 from frappe.model.mapper import get_mapped_doc
 from frappe.model.utils import get_fetch_values
-from frappe.utils import flt
+from frappe.utils import cint, flt
 
 
 class SaudaBooking(Document):
 	pass
+
+
+def make_sauda_order_id(sauda_booking_name: str, sauda_booking_item_row) -> str:
+	"""Stable Sales Order Item trace id: `{sauda_booking_name}-{idx}` (booking child row order)."""
+	idx = cint(
+		sauda_booking_item_row.get("idx")
+		if hasattr(sauda_booking_item_row, "get")
+		else getattr(sauda_booking_item_row, "idx", None)
+	)
+	if idx < 1:
+		frappe.throw(_("Invalid Sauda Booking Item row index for Order ID."))
+	return f"{sauda_booking_name}-{idx}"
+
+
+def resolve_sauda_booking_item_to_variant_item_code(sauda_item, resolved_item_cache=None):
+	"""Resolve the Item variant code from a Sauda Booking Item row (grade + dimension).
+
+	:param sauda_item: Child row (dict-like or document row) with `grade` and `dimension`.
+	:param resolved_item_cache: Optional dict keyed by ``(grade, dimension)`` to avoid repeated lookups.
+	"""
+	if resolved_item_cache is None:
+		resolved_item_cache = {}
+
+	def getv(key):
+		if hasattr(sauda_item, "get"):
+			return sauda_item.get(key)
+		return getattr(sauda_item, key, None)
+
+	grade = getv("grade")
+	dimension = getv("dimension")
+	if not grade or not dimension:
+		return None
+
+	key = (grade, dimension)
+	if key in resolved_item_cache:
+		return resolved_item_cache[key]
+
+	dimension_doc = frappe.get_cached_doc("Dimensions", dimension)
+
+	candidates = [
+		dimension_doc.name,
+		getattr(dimension_doc, "mould_sizes", None),
+		getattr(dimension_doc, "mould_length", None),
+		f"{dimension_doc.get('mould_sizes')} - {dimension_doc.get('mould_length')}",
+	]
+	seen = set()
+	candidates = [c for c in candidates if c and not (c in seen or seen.add(c))]
+
+	item_code = frappe.db.get_value(
+		"Item Variant Attribute",
+		{"variant_of": grade, "attribute_value": dimension_doc.name},
+		"parent",
+	)
+	if item_code:
+		resolved_item_cache[key] = item_code
+		return item_code
+
+	for val in candidates:
+		item_code = frappe.db.get_value(
+			"Item Variant Attribute",
+			{"variant_of": grade, "attribute_value": val},
+			"parent",
+		)
+		if item_code:
+			resolved_item_cache[key] = item_code
+			return item_code
+
+	resolved_item_cache[key] = None
+	return None
 
 
 @frappe.whitelist()
@@ -87,54 +156,7 @@ def _make_sales_order(source_name: str, target_doc=None, ignore_permissions=Fals
 		return d.name in filtered_items if filtered_items else True
 
 	def resolve_item_code(sauda_item):
-		"""Resolve the actual variant Item code from Sauda Booking Item's grade + dimension."""
-		grade = sauda_item.get("grade")
-		dimension = sauda_item.get("dimension")
-		if not grade or not dimension:
-			return None
-
-		key = (grade, dimension)
-		if key in resolved_item_cache:
-			return resolved_item_cache[key]
-
-		# `grade` is a template item (has_variants=1). The corresponding variant is
-		# identified by matching `dimension` against Item Variant Attribute.attribute_value.
-		dimension_doc = frappe.get_cached_doc("Dimensions", dimension)
-
-		# Candidates for attribute_value matching (depends on how Item variants were defined).
-		candidates = [
-			dimension_doc.name,
-			getattr(dimension_doc, "mould_sizes", None),
-			getattr(dimension_doc, "mould_length", None),
-			f"{dimension_doc.get('mould_sizes')} - {dimension_doc.get('mould_length')}",
-		]
-		# Remove falsy + duplicates while keeping order.
-		seen = set()
-		candidates = [c for c in candidates if c and not (c in seen or seen.add(c))]
-
-		# First try exact dimension.name match.
-		item_code = frappe.db.get_value(
-			"Item Variant Attribute",
-			{"variant_of": grade, "attribute_value": dimension_doc.name},
-			"parent",
-		)
-		if item_code:
-			resolved_item_cache[key] = item_code
-			return item_code
-
-		# Fallback to any candidate.
-		for val in candidates:
-			item_code = frappe.db.get_value(
-				"Item Variant Attribute",
-				{"variant_of": grade, "attribute_value": val},
-				"parent",
-			)
-			if item_code:
-				resolved_item_cache[key] = item_code
-				return item_code
-
-		resolved_item_cache[key] = None
-		return None
+		return resolve_sauda_booking_item_to_variant_item_code(sauda_item, resolved_item_cache)
 
 	def update_item(source, target, source_parent):
 		# Resolve and set the actual variant Item code.
@@ -166,6 +188,8 @@ def _make_sales_order(source_name: str, target_doc=None, ignore_permissions=Fals
 		target.amount = flt(source.amount)
 		if source_parent and source_parent.get("name"):
 			target.custom_reference = source_parent.name
+			if target.meta.get_field("custom_order_id"):
+				target.custom_order_id = make_sauda_order_id(source_parent.name, source)
 
 	doclist = get_mapped_doc(
 		"Sauda Booking",

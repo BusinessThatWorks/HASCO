@@ -5,3 +5,6 @@
 tags
 node_modules
 __pycache__
+
+# Paste into Desk → Print Format → HTML (not versioned)
+sales_order_print_format.html

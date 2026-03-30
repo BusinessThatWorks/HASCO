@@ -137,13 +137,14 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Item": {
+		"before_validate": "hasco.hasco.events.item.ensure_gst_hsn_for_test_items",
+	},
+	"Sales Order": {
+		"before_cancel": "hasco.hasco.events.sales_order.clear_custom_order_id_on_cancel",
+	},
+}
 
 # Scheduled Tasks
 # ---------------
@@ -169,7 +170,7 @@ app_license = "mit"
 # Testing
 # -------
 
-# before_tests = "hasco.install.before_tests"
+before_tests = "hasco.hasco.install.before_tests"
 
 # Overriding Methods
 # ------------------------------
