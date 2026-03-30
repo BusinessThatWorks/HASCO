@@ -9,3 +9,5 @@ hasco.patches.update_sales_order_print_format
 hasco.patches.update_sales_order_print_format_sauda_scope
 hasco.patches.update_pending_casting_print_format
 hasco.patches.make_gst_hsn_code_list_view
+hasco.patches.clear_custom_order_id_on_cancelled_sales_order_items
+hasco.patches.backfill_sales_order_item_custom_order_id

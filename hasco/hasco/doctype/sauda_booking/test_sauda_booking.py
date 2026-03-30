@@ -6,7 +6,7 @@ from erpnext.controllers.item_variant import create_variant
 from frappe.tests.utils import FrappeTestCase
 from frappe.utils import flt, today
 
-from hasco.hasco.doctype.sauda_booking.sauda_booking import make_sales_order
+from hasco.hasco.doctype.sauda_booking.sauda_booking import make_sales_order, make_sauda_order_id
 
 
 class TestSaudaBooking(FrappeTestCase):
@@ -208,6 +208,8 @@ class TestSaudaBooking(FrappeTestCase):
 		self.assertEqual(so.custom_booking_medium, booking.communication_medium)
 		# Header custom_sauda_booking_id is removed; mapper stores reference per item.
 		self.assertTrue(all(d.custom_reference == booking.name for d in so.items))
+		for so_item, sauda_row in zip(so.items, booking.table_ulgv, strict=True):
+			self.assertEqual(so_item.custom_order_id, make_sauda_order_id(booking.name, sauda_row))
 
 		so_item_codes = [d.item_code for d in so.items]
 		self.assertIn(variant_1.item_code, so_item_codes)
@@ -274,3 +276,71 @@ class TestSaudaBooking(FrappeTestCase):
 
 		self.assertEqual(len(so.items), 1)
 		self.assertEqual(so.items[0].item_code, variant_1.item_code)
+		self.assertEqual(
+			so.items[0].custom_order_id,
+			make_sauda_order_id(booking.name, booking.table_ulgv[0]),
+		)
+
+	def test_make_sales_order_two_bookings_one_sales_order(self):
+		"""Append a second Sauda Booking onto the same draft Sales Order; Order ID uses each booking name + source row idx."""
+		attribute_name = f"Test Dimension Attribute - {frappe.generate_hash(6)}"
+
+		dimension_a = self._make_dimension("30", "40", quantity=1.0)
+		dimension_b = self._make_dimension("31", "41", quantity=2.0)
+
+		item_attribute = self._make_item_attribute_with_values(
+			attribute_name=attribute_name,
+			values=[(dimension_a.name, "DA"), (dimension_b.name, "DB")],
+		)
+
+		grade_template_code = f"TEST-GRADE-{frappe.generate_hash(6)}"
+		template = self._make_item_template_with_variant_attr(grade_template_code, item_attribute.name)
+
+		self._make_variant(template.item_code, item_attribute.name, dimension_a.name)
+		self._make_variant(template.item_code, item_attribute.name, dimension_b.name)
+
+		customer_code = f"CUST-{frappe.generate_hash(5)}"
+		customer_name = f"_Test Sauda Customer {frappe.generate_hash(6)}"
+		customer = self._make_customer(customer_name, customer_code)
+
+		booking_one = self._make_sauda_booking(
+			party_name=customer.name,
+			item_rows=[
+				{
+					"grade": template.item_code,
+					"dimension": dimension_a.name,
+					"quantity": dimension_a.quantity,
+					"rate": 50,
+					"amount": flt(dimension_a.quantity) * 50,
+				},
+			],
+		)
+		booking_two = self._make_sauda_booking(
+			party_name=customer.name,
+			item_rows=[
+				{
+					"grade": template.item_code,
+					"dimension": dimension_b.name,
+					"quantity": dimension_b.quantity,
+					"rate": 60,
+					"amount": flt(dimension_b.quantity) * 60,
+				},
+			],
+		)
+
+		so = make_sales_order(booking_one.name, args=None)
+		self.assertEqual(len(so.items), 1)
+		so = make_sales_order(booking_two.name, target_doc=so, args=None)
+
+		self.assertEqual(len(so.items), 2)
+		by_ref = {row.custom_reference: row for row in so.items}
+		self.assertEqual(set(by_ref.keys()), {booking_one.name, booking_two.name})
+
+		self.assertEqual(
+			by_ref[booking_one.name].custom_order_id,
+			make_sauda_order_id(booking_one.name, booking_one.table_ulgv[0]),
+		)
+		self.assertEqual(
+			by_ref[booking_two.name].custom_order_id,
+			make_sauda_order_id(booking_two.name, booking_two.table_ulgv[0]),
+		)
